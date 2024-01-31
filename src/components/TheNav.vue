@@ -1,15 +1,29 @@
 <script setup>
-import { ref } from 'vue'
-import { ClockIcon, ListBulletIcon, ChartBarIcon } from '@heroicons/vue/24/outline'
-import NavItem from './NavItem.vue';
+    import { ref } from 'vue'
+    import { ClockIcon, ListBulletIcon, ChartBarIcon } from '@heroicons/vue/24/outline'
+    import { PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS } from '../constants.js'
+    import NavItem from './NavItem.vue';
 
-const navItems = {
-  Timeline: ClockIcon,
-  Activities: ListBulletIcon,
-  Progress: ChartBarIcon,
-}
+    const navItems = {
+        [PAGE_TIMELINE]: ClockIcon,
+        [PAGE_ACTIVITIES]: ListBulletIcon,
+        [PAGE_PROGRESS]: ChartBarIcon,
+    }
 
-const currPage = ref('Activities')
+    const currPage = ref(normalizePageHash())
+
+    function normalizePageHash() {
+        const hash = window.location.hash.slice(1)
+
+        if (Object.keys(navItems).includes(hash)) {
+            return hash
+        }
+        window.location.hash = PAGE_TIMELINE
+
+        return PAGE_TIMELINE
+    }
+
+
 </script>
 
 <template>
