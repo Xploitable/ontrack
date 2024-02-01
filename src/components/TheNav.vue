@@ -10,7 +10,7 @@
     const navItems = {
         [PAGE_TIMELINE]: ClockIcon,
         [PAGE_ACTIVITIES]: ListBulletIcon,
-        [PAGE_PROGRESS]: ChartBarIcon,
+        [PAGE_PROGRESS]: ChartBarIcon
     }
 
 </script>
@@ -22,7 +22,7 @@
         v-for="(icon, page) in navItems" 
         :key="page" 
         :href="`#${page}`" 
-        :class="{ 'pointer-events-none bg-gray-50n0': page === currPage }"
+        :class="{ 'pointer-events-none bg-gray-500': page === currPage }"
         @click="emit('navigate', page)"
         >
             <component :is="icon" class="h-6 w-6" /> {{ page }}
