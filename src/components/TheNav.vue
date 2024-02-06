@@ -3,7 +3,7 @@
     import { PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS } from '../constants'
     import NavItem from './NavItem.vue'
 
-    defineProps(['currPage'])
+    defineProps(['currentPage'])
 
     const emit = defineEmits(['navigate'])
 
@@ -22,7 +22,7 @@
         v-for="(icon, page) in navItems" 
         :key="page" 
         :href="`#${page}`" 
-        :class="{ 'pointer-events-none bg-gray-200': page === currPage }"
+        :class="{ 'pointer-events-none bg-gray-200': page === currentPage }"
         @click="emit('navigate', page)"
         >
             <component :is="icon" class="h-6 w-6" /> {{ page }}
